@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <math.h>
+
+double convert_to_radians(double degrees) {
+    return degrees * M_PI / 180;
+}
+
+double calculate_cos(double x) {
+    double cos_x = 1;
+    double term = 1;
+    int sign = -1;
+    int i;
+
+    for (i = 2; i <= 10; i += 2) {
+        term *= (x * x) / (i * (i - 1));
+        cos_x += sign * term;
+        sign *= -1;
+    }
+
+    return cos_x;
+}
+
+int main() {
+    double degrees;
+    double radians;
+    double cos_x;
+
+    printf("Enter the angle in degrees: ");
+    scanf("%lf", &degrees);
+
+    radians = convert_to_radians(degrees);
+    cos_x = calculate_cos(radians);
+
+    printf("The cosine of %lf degrees is %lf.\n", degrees, cos_x);
+
+    return 0;
+}
