@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+   int octalNum, decimalNum = 0, i = 0, remainder;
+
+   printf("Enter an octal number: ");
+   scanf("%d", &octalNum);
+
+   while(octalNum != 0) {
+      remainder = octalNum % 10;
+      decimalNum += remainder * pow(8, i++);
+      octalNum /= 10;
+   }
+
+   printf("The decimal number is: %d\n", decimalNum);
+
+   return 0;
+}
