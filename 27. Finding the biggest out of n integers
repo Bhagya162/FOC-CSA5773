@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main() {
+    int n, number, largest;
+
+    printf("Enter the value of n: ");
+    scanf("%d", &n);
+
+    printf("Enter %d integers: ", n);
+
+    // get the first number and initialize largest to it
+    scanf("%d", &largest);
+
+    // compare each subsequent number with largest and update if needed
+    for (int i = 1; i < n; i++) {
+        scanf("%d", &number);
+        if (number > largest) {
+            largest = number;
+        }
+    }
+
+    printf("The largest number is %d.\n", largest);
+
+    return 0;
+}
