@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <math.h>
+
+double convert_to_radians(double degrees) {
+    return degrees * M_PI / 180;
+}
+
+double calculate_sin(double x) {
+    double sin_x = 0;
+    double term = x;
+    int sign = 1;
+    int i;
+
+    for (i = 1; i <= 10; i += 2) {
+        sin_x += sign * term;
+        term *= (x * x) / (i * (i + 1));
+        sign *= -1;
+    }
+
+    return sin_x;
+}
+
+int main() {
+    double degrees;
+    double radians;
+    double sin_x;
+
+    printf("Enter the angle in degrees: ");
+    scanf("%lf", &degrees);
+
+    radians = convert_to_radians(degrees);
+    sin_x = calculate_sin(radians);
+
+    printf("The sine of %lf degrees is %lf.\n", degrees, sin_x);
+
+    return 0;
+}
